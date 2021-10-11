@@ -3,9 +3,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wechive/app/routes/app_pages.dart';
-import 'package:wechive/core/widgets/Text.dart';
-
-class LocatorService extends GetxService {
+//* USE LIKE THIS var location=LocatorService.determinePosition();
+class LocatorService {
   static Future<Position?> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -18,8 +17,6 @@ class LocatorService extends GetxService {
       Get.defaultDialog(
         barrierDismissible: false,
         title: "Location must be enabled ",
-        titleStyle: GoogleFonts.cairo(),
-        middleTextStyle: GoogleFonts.cairo(),
         middleText:
             "Please enable location permission to use this feature and try again",
         actions: [
@@ -30,15 +27,16 @@ class LocatorService extends GetxService {
                 //  backgroundColor: Colors.green.shade200,
               ),
               onPressed: () {
+                //TODO : GO TO YOUR PREFERED SCREEN
                 Get.offAllNamed(Routes.HOME);
               },
               icon: Icon(
                 Icons.clear,
                 color: Colors.redAccent,
               ),
-              label: Txt(
+              label: Text(
                 "close",
-                color: Colors.red,
+               
               )),
           TextButton.icon(
               style: TextButton.styleFrom(
@@ -53,10 +51,8 @@ class LocatorService extends GetxService {
                 Icons.settings_outlined,
                 color: Colors.green,
               ),
-              label: Txt(
+              label: Text(
                 "enable permission",
-                color: Colors.green,
-                weight: FontWeight.bold,
               )),
         ],
       );
@@ -76,8 +72,7 @@ class LocatorService extends GetxService {
       Get.defaultDialog(
         barrierDismissible: false,
         title: "Location must be enabled ",
-        titleStyle: GoogleFonts.cairo(),
-        middleTextStyle: GoogleFonts.cairo(),
+        
         middleText:
             "Please enable location permissionto use this feature and try again",
         actions: [
@@ -88,15 +83,16 @@ class LocatorService extends GetxService {
                 //  backgroundColor: Colors.green.shade200,
               ),
               onPressed: () {
+                
+                //TODO : GO TO YOUR PREFERED SCREEN
                 Get.offAllNamed(Routes.HOME);
               },
               icon: Icon(
                 Icons.clear,
                 color: Colors.redAccent,
               ),
-              label: Txt(
+              label: Text(
                 "close",
-                color: Colors.red,
               )),
           TextButton.icon(
               style: TextButton.styleFrom(
@@ -111,10 +107,8 @@ class LocatorService extends GetxService {
                 Icons.settings_outlined,
                 color: Colors.green,
               ),
-              label: Txt(
+              label: Text(
                 "allow permission",
-                color: Colors.green,
-                weight: FontWeight.bold,
               )),
         ],
       );
@@ -131,8 +125,7 @@ class LocatorService extends GetxService {
       Get.defaultDialog(
         barrierDismissible: false,
         title: "Location must be enabled ",
-        titleStyle: GoogleFonts.cairo(),
-        middleTextStyle: GoogleFonts.cairo(),
+       
         middleText:
             "Please enable location permissionto use this feature and try again",
         actions: [
@@ -149,9 +142,8 @@ class LocatorService extends GetxService {
                 Icons.clear,
                 color: Colors.redAccent,
               ),
-              label: Txt(
+              label: Text(
                 "close",
-                color: Colors.red,
               )),
           TextButton.icon(
               style: TextButton.styleFrom(
@@ -166,10 +158,8 @@ class LocatorService extends GetxService {
                 Icons.settings_outlined,
                 color: Colors.green,
               ),
-              label: Txt(
+              label: Text(
                 "enable location",
-                color: Colors.green,
-                weight: FontWeight.bold,
               )),
         ],
       );
