@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:wechive/app/routes/app_pages.dart';
 //* USE LIKE THIS var location=LocatorService.determinePosition();
 class LocatorService {
   static Future<Position?> determinePosition() async {
@@ -10,6 +8,7 @@ class LocatorService {
     LocationPermission permission;
     Position location;
     // Test if location services are enabled.
+    
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -28,7 +27,7 @@ class LocatorService {
               ),
               onPressed: () {
                 //TODO : GO TO YOUR PREFERED SCREEN
-                Get.offAllNamed(Routes.HOME);
+                //Get.offAllNamed(Routes.HOME);
               },
               icon: Icon(
                 Icons.clear,
@@ -85,7 +84,7 @@ class LocatorService {
               onPressed: () {
                 
                 //TODO : GO TO YOUR PREFERED SCREEN
-                Get.offAllNamed(Routes.HOME);
+               // Get.offAllNamed(Routes.HOME);
               },
               icon: Icon(
                 Icons.clear,
@@ -136,7 +135,7 @@ class LocatorService {
                 //  backgroundColor: Colors.green.shade200,
               ),
               onPressed: () {
-                Get.offAllNamed(Routes.HOME);
+             //   Get.offAllNamed(Routes.HOME);
               },
               icon: Icon(
                 Icons.clear,
