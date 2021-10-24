@@ -1,3 +1,4 @@
+//* Please star this repo
 //*How to use this:
 ///1-import get in to your pubspec.yaml
 /*2-GetMaterialApp(
