@@ -23,7 +23,7 @@ eg:
 Location Service will tell you to use Getx and geolocator package.
 and use it like that
 ```dart
-var location=LocatorService.determinePosition();
+Position location= await LocatorService.determinePosition();
 ```
 easy isn't it ??
 
