@@ -1,10 +1,30 @@
+import 'dart:async';
 
-class SplashScreen1Sub extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class SplashScreenWidget extends StatefulWidget {
+  final Widget homePage;
+  final Widget logo;
+  final String slogan;
+  final Color backgroundColor;
+  final Duration duration;
+  final Curve curve;
+  const SplashScreenWidget(
+      {required this.homePage,
+      Key? key,
+      required this.logo,
+      required this.slogan,
+      this.backgroundColor = Colors.white,
+      this.duration = const Duration(milliseconds: 1000),
+      this.curve = Curves.easeIn})
+      : super(key: key);
+
   @override
-  _SplashScreen1SubState createState() => _SplashScreen1SubState();
+  _SplashScreenWidgetState createState() => _SplashScreenWidgetState();
 }
 
-class _SplashScreen1SubState extends State<SplashScreen1Sub>
+class _SplashScreenWidgetState extends State<SplashScreenWidget>
     with TickerProviderStateMixin {
   double _fontSize = 2;
   double _containerSize = 1.5;
@@ -18,11 +38,10 @@ class _SplashScreen1SubState extends State<SplashScreen1Sub>
   void initState() {
     super.initState();
 
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _controller = AnimationController(vsync: this, duration: widget.duration);
 
-    animation1 = Tween<double>(begin: 120, end: 20).animate(CurvedAnimation(
-        parent: _controller, curve: Curves.fastLinearToSlowEaseIn))
+    animation1 = Tween<double>(begin: 120, end: 20)
+        .animate(CurvedAnimation(parent: _controller, curve: widget.curve))
       ..addListener(() {
         setState(() {
           _textOpacity = 1.0;
@@ -31,23 +50,23 @@ class _SplashScreen1SubState extends State<SplashScreen1Sub>
 
     _controller.forward();
 
-    Timer(Duration(seconds: 2), () {
+    Timer(widget.duration, () {
       setState(() {
         _fontSize = 1.06;
       });
     });
 
-    Timer(Duration(seconds: 2), () {
+    Timer(widget.duration * 1.75, () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(Duration(seconds: 4), () {
+    Timer(widget.duration * 2.5, () {
       setState(() {
         Navigator.pushReplacement(
-            context, PageTransition1(SplashScreen1SubHome()));
+            context, MaterialPageRoute(builder: (context) => widget.homePage));
       });
     });
   }
@@ -71,17 +90,15 @@ class _SplashScreen1SubState extends State<SplashScreen1Sub>
             child: Column(
               children: [
                 AnimatedContainer(
-                    duration: Duration(milliseconds: 1000),
+                    duration: widget.duration,
                     curve: Curves.fastLinearToSlowEaseIn,
                     height: _height / _fontSize),
                 AnimatedOpacity(
-                  duration: Duration(milliseconds: 1000),
+                  duration: widget.duration,
                   opacity: _textOpacity,
                   child: Text(
-                    
-                    //TODO:ADD YOUR SLOGAN HERE
-                    'SLOGAN',
-                   
+                    ///ADD YOUR SLOGAN HERE
+                    widget.slogan,
                   ),
                 ),
               ],
@@ -89,25 +106,20 @@ class _SplashScreen1SubState extends State<SplashScreen1Sub>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 1000),
-              curve: Curves.fastLinearToSlowEaseIn,
-              opacity: _containerOpacity,
-              child: AnimatedContainer(
-                  duration: Duration(milliseconds: 1000),
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  height: _width / _containerSize,
-                  width: _width / _containerSize,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Image.asset(
-                    //TODO:ADD YOUR LOGO HERE
-                    'logo.png',
-                    color: KBlue,
-                  )),
-            ),
+                duration: widget.duration,
+                curve: Curves.fastLinearToSlowEaseIn,
+                opacity: _containerOpacity,
+                child: AnimatedContainer(
+                    duration: widget.duration,
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    height: _width / _containerSize,
+                    width: _width / _containerSize,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: widget.logo)),
           ),
         ],
       ),
@@ -121,7 +133,7 @@ class PageTransition1 extends PageRouteBuilder {
   PageTransition1(this.page)
       : super(
           pageBuilder: (context, animation, anotherAnimation) => page,
-          transitionDuration: Duration(milliseconds: 2000),
+          transitionDuration: const Duration(milliseconds: 2000),
           transitionsBuilder: (context, animation, anotherAnimation, child) {
             animation = CurvedAnimation(
               curve: Curves.easeIn,
@@ -137,12 +149,4 @@ class PageTransition1 extends PageRouteBuilder {
             );
           },
         );
-}
-
-class SplashScreen1SubHome extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //TODO:ADD YOUR SCREEN TO NAVIGATE HERE
-    return ();
-  }
 }

@@ -2,9 +2,9 @@
 //*How to use this:
 ///1-import get in to your pubspec.yaml
 /*2-GetMaterialApp(
-        
+  
         title: "Akartkom",
-        home: SplashScreen1Sub(),
+        home: SplashScreenWidget(),
         translations: TranslationsService(), /// your translations
         locale:Locale('en', 'US'), /// translations will be displayed in that locale
         fallbackLocale: Locale('en', 'US'),
@@ -20,17 +20,12 @@
 
 import 'package:get/get.dart';
 
-
 class TranslationsService extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
           /// add your locales like this
-          "app name": "Akartakom",
         },
-        'ar_EG': {
-          "app name": "عقاراتكم",
-
-        }
+        'ar_EG': {}
       };
 }

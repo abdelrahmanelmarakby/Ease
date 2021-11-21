@@ -1,11 +1,19 @@
-class CreditCard extends StatefulWidget {
-  String name;
-  String number;
-  String cvv;
-  String month;
-  String year;
+import 'package:flutter/material.dart';
 
-  CreditCard({Key key, this.name, this.number, this.cvv, this.month, this.year})
+class CreditCard extends StatefulWidget {
+  final String name;
+  final String number;
+  final String cvv;
+  final String month;
+  final String year;
+
+  const CreditCard(
+      {Key? key,
+      this.name = " name",
+      this.number = "00000000000",
+      this.cvv = "000",
+      this.month = "12",
+      this.year = "2021"})
       : super(key: key);
   @override
   _CreditCardState createState() => _CreditCardState();
@@ -20,7 +28,7 @@ class _CreditCardState extends State<CreditCard> {
         elevation: 4,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Container(
+          child: SizedBox(
             height: 158,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,13 +38,13 @@ class _CreditCardState extends State<CreditCard> {
                   children: [
                     Text(
                       widget.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     GestureDetector(
-                      child: Icon(
+                      child: const Icon(
                         Icons.delete_outline,
                         color: Colors.grey,
                         size: 25,
@@ -47,20 +55,20 @@ class _CreditCardState extends State<CreditCard> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Text(
                   widget.number,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   "Month / Year",
                   style: TextStyle(
                     color: Colors.grey,
@@ -69,13 +77,13 @@ class _CreditCardState extends State<CreditCard> {
                 ),
                 Text(
                   "${widget.month} / ${widget.year}",
-                  style: TextStyle(fontWeight: FontWeight.w600),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  SvgPicture.asset(
+                  Image.asset(
                     "widgets/credit card/card1.svg",
                     width: 50,
                     height: 50,

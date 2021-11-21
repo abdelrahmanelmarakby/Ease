@@ -1,14 +1,45 @@
-# Flutter Shortcuts
+<!-- 
+This README describes the package. If you publish this package to pub.dev,
+this README's contents appear on the landing page for your package.
 
-This repo is for anything that can be reusable in flutter like custom widgets 🟥, animations 🌟and more.
+For information about how to write a good package README, see the guide for
+[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-## How to Use
+For general information about developing packages, see the Dart guide for
+[creating packages](https://dart.dev/guides/libraries/create-library-packages)
+and the Flutter guide for
+[developing packages and plugins](https://flutter.dev/developing-packages). 
+-->
 
-Just get the file you want to use.
+# Ease
 
-eg. how to use the Custom text form field?
+This packa is for anything that can be reusable in flutter like custom widgets 🟥, animations 🌟and more.
 
-go to widgets inside this repo then download the file to your project and use it like this.
+## Features
+
+* 1-custom `text` widget to ease its usage
+* 2- custom `text field` widget with cool validation UI
+* 3-super cool animated `splash screen`
+* 4- easy to use `geolocator` location service
+* 5- dart extension to convert default colors to hex colors
+* 6-dynamic theme with persistence that can be implemented in 1 min
+* 7-the easiest localization implementation
+* 8-credit card widget
+
+## Getting started
+
+go to your ```Android/app/build.gradle file and edit your compileSdkVersion to 31```
+
+``` dart
+android {
+    compileSdkVersion 31
+```
+
+## Usage
+
+### Widgets and how to use them
+
+TextFormField with simple validation indicator
 
 ```dart
 TxtForm(
@@ -16,42 +47,55 @@ controller:myEditingController,
 )
 ```
 
-## Services and how to use them
-in each service, you will find what to import and how to use 
+Text with simplified usage
+
+```dart
+Txt("Hello World",
+color:Colors.blue
+)
+```
+
+SplashScreen With animation
+
+```dart
+SplashScreenWidget(
+    homePage:HomeScreen(),
+    logo:Image.asset("assets/logo");
+    slogan:"PR are welcome"
+)
+```
+
+### Services and how to use them
+
+in each service, you will find what to import and how to use
 
 eg:
 Location Service will tell you to use Getx and geolocator package.
 and use it like that
+
 ```dart
 Position location= await LocatorService.determinePosition();
 ```
+
+this how to add dark and light theme in your project
+
+``` dart
+var myThemes=Theme(ThemeData.light,ThemeData.dark);
+
+MaterialApp(
+    theme:myThemes.light
+    darkTheme:myThemes.dark
+    themeMode:ThemeService().theme
+)
+ThemeService().switchTheme();
+```
+
 easy isn't it ??
 
-## CONTRIBUTING ARE MOST WELCOMED
-Pull requests are welcome. For all changes, please open an issue first to discuss what you would like to change.
+## Additional information
 
+if you have any idea that you think will be a good addittion contribure or add an issue to the github repo feel stuck on something ? join our telegram group
 
-## License
-MIT License
+## <https://t.me/joinchat/p9O1YRT_NlQwZDZk>
 
-```
-Copyright (c) 2021 abdelrahmanelmarakby
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+### just wish and I will do my best to add it super fast,Please Star and support this repo

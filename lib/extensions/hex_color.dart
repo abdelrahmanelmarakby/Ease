@@ -1,5 +1,7 @@
 //* final Color color = HexColor.fromHex('#aabbcc');
 
+import 'dart:ui';
+
 extension HexColor on Color {
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
   static Color fromHex(String hexString) {
